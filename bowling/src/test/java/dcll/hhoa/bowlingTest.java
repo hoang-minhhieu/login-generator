@@ -6,15 +6,17 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class bowlingTest {
-    private bowling g;
+    private Bowling g;
 
     @Before
     public void init() {
-        g = new bowling();
+        g = new Bowling();
     }
 
-    void rollMany(int n, int pins, bowling g) {
-        for (int i = 0; i < n; i++) g.lance(pins);
+    void rollMany(int n, int pins, Bowling g) {
+        for (int i = 0; i < n; i++) {
+            g.lance(pins);
+        }
     }
 
     @Test
@@ -51,5 +53,63 @@ public class bowlingTest {
     public void testPerfectGame() {
         rollMany(12, 10, g);
         assertEquals(300, g.score());
+    }
+
+    @Test
+    public void testScore1(){
+        g.lance(9);
+        g.lance(0);
+        g.lance(9);
+        g.lance(0);
+        g.lance(9);
+        g.lance(0);
+        g.lance(9);
+        g.lance(0);
+        g.lance(9);
+        g.lance(0);
+
+        g.lance(9);
+        g.lance(0);
+        g.lance(9);
+        g.lance(0);
+        g.lance(9);
+        g.lance(0);
+        g.lance(9);
+        g.lance(0);
+        g.lance(9);
+        g.lance(0);
+
+        assertEquals(90, g.score());
+    }
+
+    @Test
+    public void testScore2(){
+        g.lance(5);
+        g.lance(5);
+        g.lance(5);
+        g.lance(5);
+        g.lance(5);
+
+        g.lance(5);
+        g.lance(5);
+        g.lance(5);
+        g.lance(5);
+        g.lance(5);
+
+        g.lance(5);
+        g.lance(5);
+        g.lance(5);
+        g.lance(5);
+        g.lance(5);
+
+        g.lance(5);
+        g.lance(5);
+        g.lance(5);
+        g.lance(5);
+        g.lance(5);
+
+        g.lance(5);
+
+        assertEquals(150, g.score());
     }
 }
