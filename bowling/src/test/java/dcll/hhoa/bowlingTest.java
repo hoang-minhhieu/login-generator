@@ -6,14 +6,14 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class bowlingTest {
-    private Bowling g;
+    private bowling g;
 
     @Before
     public void init() {
-        g = new Bowling();
+        g = new bowling();
     }
 
-    void rollMany(int n, int pins, Bowling g) {
+    void rollMany(int n, int pins, bowling g) {
         for (int i = 0; i < n; i++) {
             g.lance(pins);
         }
