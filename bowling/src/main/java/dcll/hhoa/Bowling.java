@@ -4,7 +4,7 @@ package dcll.hhoa;
  * Created by 21107237 on 07/11/2016.
  */
 
-public class bowling {
+public class Bowling {
     /**
      * Le nombre de jeu.
      */
