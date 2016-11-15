@@ -20,6 +20,23 @@ public class bowlingTest {
     }
 
     @Test
+    public void testGetLancerCourant(){
+        g.lance(5);
+        g.lance(4);
+        g.lance(6);
+        assertEquals(3, g.getLancerCourant());
+    }
+
+    @Test
+    public void testLancer(){
+        g.lance(7);
+        g.lance(3);
+        int[] l = g.getLancer();
+        assertEquals(l[0], 7);
+        assertEquals(l[1], 3);
+    }
+
+    @Test
     public void testZero() {
         rollMany(20, 0, g);
         assertEquals(0, g.score());
