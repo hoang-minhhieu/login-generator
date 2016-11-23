@@ -37,7 +37,6 @@ public class LoginServiceTest {
     @Test
     public void testFindAllLogins() throws Exception {
             List<String> verif = Arrays.asList("un","deux","trois");
-            assertEquals(verif.size(), list.length);
-            //assertEquals(verif, ls.findAllLogins());
+            assertEquals(verif.size(), ls.findAllLogins().size());
     }
 }
