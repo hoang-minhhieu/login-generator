@@ -18,6 +18,7 @@ public class LoginGeneratorTest {
         assertEquals("PDUR", loginGenerator.generateLoginForNomAndPrenom("Durand", "Paul"));
         assertEquals("JROL1", loginGenerator.generateLoginForNomAndPrenom("Rolling", "Jean"));
         assertEquals("PDUR1", loginGenerator.generateLoginForNomAndPrenom("Durand", "Paul"));
+        assertNotEquals("PDUR", loginGenerator.generateLoginForNomAndPrenom("Durand", "Paul"));
         assertEquals("JRAL2", loginGenerator.generateLoginForNomAndPrenom("Ralling", "John"));
     }
 }

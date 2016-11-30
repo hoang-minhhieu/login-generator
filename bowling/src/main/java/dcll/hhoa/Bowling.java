@@ -29,7 +29,7 @@ public class Bowling {
     /**
         Constructeur.
      */
-    public bowling() {
+    public Bowling() {
         this.lancer = new int[MAX_TAILLE];
     }
 
@@ -50,15 +50,20 @@ public class Bowling {
 
     /**
         @param p la valeur d'un lance
+        @throws MyException exception
      */
-    public final void lance(final int p) {
+    public final void lance(final int p) throws MyException {
+        if(p > NBJEU || p < 0) {
+            throw new MyException("Le score d'un jeu doit entre 0 et 10");
+        }
         lancer[lancerCourant++] = p;
     }
 
     /**
         @return score le résultat du score final
+        @throws MyException
      */
-    public final int score() {
+    public final int score() throws MyException {
         int score = 0;
         int jeu = 0;
 
@@ -80,40 +85,60 @@ public class Bowling {
     /**
      *  @param jeu un jeu
         @return boolean si c'est un strike
+        @throws MyException
      */
-    private boolean isStrike(final int jeu) {
+    public final boolean isStrike(final int jeu) throws MyException {
+        if(jeu > MAX_TAILLE || jeu < 0) {
+            throw new MyException("Le jeu doit être inférieur ou égal à 10");
+        }
         return lancer[jeu] == MAX_SCORE;
     }
 
     /**
      *  @param jeu  un jeu
         @return boolean si c'est un spare
+        @throws MyException exception
      */
-    private boolean isSpare(final int jeu) {
+    public final boolean isSpare(final int jeu) throws MyException {
+        if(jeu > MAX_TAILLE || jeu < 0) {
+            throw new MyException("Le jeu doit être inférieur ou égal à 20");
+        }
         return sumOfRolls(jeu) == MAX_SCORE;
     }
 
     /**
      *  @param jeu un jeu
         @return le bonus d'un strike
+        @throws MyException
      */
-    private int strikeBonus(final int jeu) {
+    public final int strikeBonus(final int jeu) throws MyException {
+        if(jeu > MAX_TAILLE || jeu < 0) {
+            throw new MyException("Le jeu doit être inférieur ou égal à 20");
+        }
         return sumOfRolls(jeu + 1);
     }
 
     /**
      *  @param jeu un jeu
         @return le bonus d'un spare
+        @throws MyException
      */
-    private int spareBonus(final int jeu) {
+    public final int spareBonus(final int jeu) throws MyException {
+        if(jeu > MAX_TAILLE || jeu < 0) {
+            throw new MyException("Le jeu doit être inférieur ou égal à 20");
+        }
         return lancer[jeu + 2];
     }
 
     /**
         @param jeu un jeu
         @return La somme de 2 jeux consécutifs
+        @throws MyException
      */
-    private int sumOfRolls(final int jeu) {
+    public final int sumOfRolls(final int jeu) throws MyException {
+        if(jeu > MAX_TAILLE || jeu < 0) {
+            throw new MyException("Le jeu doit être inférieur ou égal à 20");
+        }
         return lancer[jeu] + lancer[jeu + 1];
     }
 }

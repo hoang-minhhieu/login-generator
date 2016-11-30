@@ -6,21 +6,21 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class bowlingTest {
-    private bowling g;
+    private Bowling g;
 
     @Before
     public void init() {
-        g = new bowling();
+        g = new Bowling();
     }
 
-    void rollMany(int n, int pins, bowling g) {
+    void rollMany(int n, int pins, Bowling g) throws MyException {
         for (int i = 0; i < n; i++) {
             g.lance(pins);
         }
     }
 
     @Test
-    public void testGetLancerCourant(){
+    public void testGetLancerCourant() throws MyException {
         g.lance(5);
         g.lance(4);
         g.lance(6);
@@ -28,7 +28,7 @@ public class bowlingTest {
     }
 
     @Test
-    public void testLancer(){
+    public void testLancer() throws MyException {
         g.lance(7);
         g.lance(3);
         int[] l = g.getLancer();
@@ -36,20 +36,31 @@ public class bowlingTest {
         assertEquals(l[1], 3);
     }
 
+    @Test(expected = MyException.class)
+    public void testLanceInvalide() throws MyException {
+        g.lance(100);
+    }
+
+    @Test(expected = MyException.class)
+    public void testJeuInvalide() throws MyException {
+        g.lance(10);
+        assertEquals(true, g.isStrike(100));
+    }
+
     @Test
-    public void testZero() {
+    public void testZero() throws MyException {
         rollMany(20, 0, g);
         assertEquals(0, g.score());
     }
 
     @Test
-    public void testAllOnes() {
+    public void testAllOnes() throws MyException {
         rollMany(20, 1, g);
         assertEquals(20, g.score());
     }
 
     @Test
-    public void testOneSpare() {
+    public void testOneSpare() throws MyException {
         g.lance(5);
         g.lance(5);
         g.lance(3);
@@ -58,7 +69,7 @@ public class bowlingTest {
     }
 
     @Test
-    public void testOneStrike() {
+    public void testOneStrike() throws MyException {
         g.lance(10);
         g.lance(3);
         g.lance(4);
@@ -67,13 +78,13 @@ public class bowlingTest {
     }
 
     @Test
-    public void testPerfectGame() {
+    public void testPerfectGame() throws MyException {
         rollMany(12, 10, g);
         assertEquals(300, g.score());
     }
 
     @Test
-    public void testScore1(){
+    public void testScore1() throws MyException {
         g.lance(9);
         g.lance(0);
         g.lance(9);
@@ -100,7 +111,7 @@ public class bowlingTest {
     }
 
     @Test
-    public void testScore2(){
+    public void testScore2() throws MyException {
         g.lance(5);
         g.lance(5);
         g.lance(5);
